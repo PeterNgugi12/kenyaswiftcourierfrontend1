@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Your other CSS styles below */
+@layer base {
+  :root {
+    /* Brand Colors */
+    --background: 220 20% 97%;
+    --foreground: 220 50% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 50% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 50% 8%;
+
+    /* Navy Primary */
+    --primary: 220 70% 18%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Amber Accent */
+    --accent: 38 95% 52%;
+    --accent-foreground: 220 50% 8%;
+
+    /* Secondary */
+    --secondary: 220 25% 92%;
+    --secondary-foreground: 220 50% 12%;
+
+    --muted: 220 20% 94%;
+    --muted-foreground: 220 15% 46%;
+
+    --destructive: 0 84% 58%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 220 70% 18%;
+
+    --radius: 0.625rem;
+
+    /* Sidebar */
+    --sidebar-background: 220 70% 14%;
+    --sidebar-foreground: 220 20% 85%;
+    --sidebar-primary: 38 95% 52%;
+    --sidebar-primary-foreground: 220 50% 8%;
+    --sidebar-accent: 220 60% 22%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 60% 22%;
+    --sidebar-ring: 38 95% 52%;
+
+    /* Status Colors */
+    --success: 142 71% 38%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 95% 52%;
+    --warning-foreground: 220 50% 8%;
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+
+    /* Custom tokens */
+    --navy: 220 70% 18%;
+    --navy-dark: 220 70% 10%;
+    --navy-light: 220 60% 25%;
+    --amber: 38 95% 52%;
+    --amber-light: 38 95% 92%;
+
+    --shadow-card: 0 1px 3px 0 hsl(220 70% 18% / 0.08), 0 1px 2px 0 hsl(220 70% 18% / 0.06);
+    --shadow-elevated: 0 4px 16px 0 hsl(220 70% 18% / 0.12), 0 2px 4px 0 hsl(220 70% 18% / 0.08);
+    --shadow-amber: 0 4px 20px 0 hsl(38 95% 52% / 0.3);
+  }
+
+  .dark {
+    --background: 220 70% 6%;
+    --foreground: 220 20% 95%;
+    --card: 220 60% 10%;
+    --card-foreground: 220 20% 95%;
+    --popover: 220 60% 10%;
+    --popover-foreground: 220 20% 95%;
+    --primary: 38 95% 52%;
+    --primary-foreground: 220 70% 8%;
+    --secondary: 220 50% 16%;
+    --secondary-foreground: 220 20% 90%;
+    --muted: 220 50% 14%;
+    --muted-foreground: 220 20% 60%;
+    --accent: 38 95% 52%;
+    --accent-foreground: 220 70% 8%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 40% 18%;
+    --input: 220 40% 18%;
+    --ring: 38 95% 52%;
+    --sidebar-background: 220 70% 8%;
+    --sidebar-foreground: 220 20% 85%;
+    --sidebar-primary: 38 95% 52%;
+    --sidebar-primary-foreground: 220 70% 8%;
+    --sidebar-accent: 220 60% 14%;
+    --sidebar-accent-foreground: 220 20% 90%;
+    --sidebar-border: 220 50% 14%;
+    --sidebar-ring: 38 95% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Stat Card */
+  .stat-card {
+    @apply bg-card rounded-xl border border-border p-5 transition-all duration-200 hover:shadow-md;
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Page Header */
+  .page-header {
+    @apply flex items-center justify-between mb-6;
+  }
+
+  .page-title {
+    @apply text-2xl font-bold text-foreground;
+  }
+
+  .page-subtitle {
+    @apply text-sm text-muted-foreground mt-0.5;
+  }
+
+  /* Status Badges */
+  .badge-success {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200;
+  }
+
+  .badge-warning {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-700 border border-amber-200;
+  }
+
+  .badge-danger {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-50 text-red-700 border border-red-200;
+  }
+
+  .badge-info {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200;
+  }
+
+  .badge-navy {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium;
+    background-color: hsl(var(--navy) / 0.1);
+    color: hsl(var(--navy));
+    border: 1px solid hsl(var(--navy) / 0.2);
+  }
+
+  /* Sidebar Link */
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 cursor-pointer;
+    color: hsl(var(--sidebar-foreground));
+  }
+
+  .sidebar-link:hover {
+    background-color: hsl(var(--sidebar-accent));
+    color: hsl(0 0% 100%);
+  }
+
+  .sidebar-link.active {
+    background-color: hsl(var(--amber));
+    color: hsl(220 50% 8%);
+  }
+
+  .sidebar-link.active svg {
+    color: hsl(220 50% 8%);
+  }
+
+  /* Data Table */
+  .data-table {
+    @apply w-full text-sm;
+  }
+
+  .data-table th {
+    @apply text-left py-3 px-4 font-semibold text-muted-foreground bg-muted/50 first:rounded-tl-lg last:rounded-tr-lg;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .data-table td {
+    @apply py-3 px-4 border-b border-border/50;
+  }
+
+  .data-table tr:last-child td {
+    @apply border-b-0;
+  }
+
+  .data-table tr:hover td {
+    @apply bg-muted/30;
+  }
+
+  /* Form */
+  .form-section {
+    @apply bg-card rounded-xl border border-border p-6;
+    box-shadow: var(--shadow-card);
+  }
+
+  .form-section-title {
+    @apply text-base font-semibold text-foreground mb-4 pb-3 border-b border-border;
+  }
+
+  /* KPI number */
+  .kpi-value {
+    @apply text-3xl font-bold text-foreground;
+  }
+
+  .kpi-label {
+    @apply text-sm text-muted-foreground font-medium mt-1;
+  }
+
+  .kpi-change {
+    @apply text-xs font-medium mt-2 flex items-center gap-1;
+  }
+
+  /* Nav */
+  .top-nav {
+    @apply h-16 bg-card border-b border-border flex items-center px-6 gap-4;
+    box-shadow: var(--shadow-card);
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 99px;
+}
+
+/* Print styles */
+@media print {
+  .no-print { display: none !important; }
+  .print-only { display: block !important; }
+  body { background: white; }
+}
